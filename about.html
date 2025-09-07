@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Adidas Store</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    @font-face {
+      font-family: "MyCustomFont";
+      src: url("TimesNewNormalRegular.ttf") format("truetype");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #000000, #0f2027, #1DB954);
+      background-size: cover;
+      background-position: center;
+      font-family: "MyCustomFont", sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stripes {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 100px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #000,
+        #000 25px,
+        transparent 25px,
+        transparent 50px
+      );
+      opacity: 0.05;
+      z-index: -1;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      position: relative;
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 5px 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Indicator box */
+    .nav-indicator {
+      position: absolute;
+      bottom: -5px;
+      height: 35px;
+      border: 2px solid #1DB954;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .navbar .cart {
+      font-size: 1.3rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    .content {
+      flex: 1;
+      padding: 120px 60px 60px;
+      max-width: 900px;
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ffffff;
+      border-left: 6px solid #1DB954;
+      padding-left: 12px;
+    }
+
+    .content h2 {
+      font-size: 1.4rem;
+      margin: 15px 0;
+      color: #1DB954;
+    }
+
+    .content p {
+      font-size: 1rem;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+      line-height: 1.6;
+    }
+
+    footer {
+      background: #111;
+      text-align: center;
+      padding: 10px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="stripes"></div>
+
+  <nav class="navbar">
+    <div class="logo">ADIDAS</div>
+    <ul id="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="selection.html">Selection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <div class="nav-indicator"></div>
+    </ul>
+    <div class="cart">🛒</div>
+  </nav>
+
+  <section class="content">
+    <h1>About Adidas</h1>
+
+    <h2>Our Legacy</h2>
+    <p>
+      Founded in 1949 by Adi Dassler, Adidas has grown into one of the world’s most recognized sportswear brands. 
+      From football pitches to fashion runways, Adidas has influenced sport and culture across generations.
+    </p>
+    <p>
+      The three stripes are more than just a design — they symbolize performance, passion, and perseverance.
+    </p>
+
+    <h2>Our Philosophy</h2>
+    <p>
+      Adidas is committed to creating products that help athletes of all levels unlock their potential. 
+      By blending innovation, sustainability, and style, Adidas strives to inspire confidence and performance worldwide.
+    </p>
+  </section>
+
+  <footer>
+    <p>© 2025 Adidas Store | This website is for project purposes only</p>
+  </footer>
+
+  <script>
+    const indicator = document.querySelector('.nav-indicator');
+    const links = document.querySelectorAll('#navbar-links li a');
+
+    function moveIndicator(element) {
+      const rect = element.getBoundingClientRect();
+      const parentRect = element.parentElement.parentElement.getBoundingClientRect();
+
+      indicator.style.width = rect.width + "px";
+      indicator.style.left = (rect.left - parentRect.left) + "px";
+    }
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', (e) => {
+        moveIndicator(e.target);
+      });
+    });
+
+    // Default position (About page active)
+    window.addEventListener('load', () => {
+      moveIndicator(document.querySelector('a[href="about.html"]'));
+    });
+  </script>
+</body>
+</html>

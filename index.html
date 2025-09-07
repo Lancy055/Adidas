@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adidas Store</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    @font-face {
+      font-family: "MyCustomFont";
+      src: url("TimesNewNormalRegular.ttf") format("truetype");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #000000, #0f2027, #1DB954);
+      background-size: cover;
+      background-position: center;
+      font-family: "MyCustomFont", sans-serif;
+    }
+
+    .bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("Banner.png");
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+    }
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      position: relative;
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 5px 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-indicator {
+      position: absolute;
+      bottom: -5px;
+      height: 35px;
+      border: 2px solid #1DB954;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .navbar .cart {
+      font-size: 1.3rem;
+      color: white;
+      cursor: pointer;
+    }
+
+.footer {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  z-index: 1000;
+}
+    .footer h1{
+      text-align: center;
+      padding: 10px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    .footer a {
+      display: flex;
+      align-items: center;
+      color: white;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer a:hover {
+      color: #1DB954;
+    }
+
+    .footer img {
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <nav class="navbar">
+    <div class="logo">ADIDAS</div>
+    <ul id="navbar-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="selection.html">Selection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <div class="nav-indicator"></div>
+    </ul>
+    <div class="cart">🛒</div>
+  </nav>
+
+  <div class="footer">
+    <a href="https://web.facebook.com/junihahaha">
+      <img src="facebook.webp" alt="Facebook"> Mutya Jhun
+    </a>
+    <a href="">
+      <img src="gmail.webp" alt="Twitter">jhnalrch@gmail.com
+    </a>
+    <a href="https://www.instagram.com/jeyyyzxc_?fbclid=IwZXh0bgNhZW0CMTAAYnJpZBExbmgzZHlVWTRnT0YzU3c4SAEevpHby2k4QUS5lxtuVd57SeTx0pfpqSBqYRdwFLugsI85mHRZMFSY5YkLmz8_aem_cJiA9mhxGHaNvWh9Si4l4A">
+      <img src="ig.png" alt="Instagram"> jeyzzzxc_
+    </a>
+    <h1>This website is for project purposes only</h1>
+  </div>
+
+  <script>
+    const indicator = document.querySelector('.nav-indicator');
+    const links = document.querySelectorAll('#navbar-links li a');
+
+    function moveIndicator(element) {
+      const rect = element.getBoundingClientRect();
+      const parentRect = element.parentElement.parentElement.getBoundingClientRect();
+
+      indicator.style.width = rect.width + "px";
+      indicator.style.left = (rect.left - parentRect.left) + "px";
+    }
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', (e) => {
+        moveIndicator(e.target);
+      });
+    });
+
+    window.addEventListener('load', () => {
+      moveIndicator(links[0]);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selection | Adidas Store</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    @font-face {
+      font-family: "MyCustomFont";
+      src: url("TimesNewNormalRegular.ttf") format("truetype");
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    .heading {
+  margin-top: 100px;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #1DB954;
+}
+
+
+ body {
+  height: 100vh;
+  font-family: "MyCustomFont", sans-serif;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: conic-gradient(
+    from 135deg at 50% 50%,
+    #000000 0deg,
+    #0f2027 90deg,
+    #043e18 180deg,
+    #0f2027 270deg,
+    #000000 360deg
+  );
+}
+
+
+    .navbar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 15px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: white;
+      cursor: pointer;
+    }
+
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      position: relative;
+    }
+
+    .navbar ul li {
+      position: relative;
+    }
+
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      padding: 5px 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-indicator {
+      position: absolute;
+      bottom: -5px;
+      height: 35px;
+      border: 2px solid #1DB954;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .navbar .cart {
+      font-size: 1.3rem;
+      color: white;
+      cursor: pointer;
+    }
+
+.selection-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 40px;
+  margin-top: 75px;
+}
+
+.item {
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid #1DB954;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 180px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.item p {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.item:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.6);
+}
+
+    .popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.85);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .popup-content {
+      background: #111;
+      border: 2px solid #1DB954;
+      padding: 30px;
+      border-radius: 12px;
+      width: 350px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .popup-content h2 {
+      color: #1DB954;
+      margin-bottom: 15px;
+    }
+
+    .popup-content p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      color: #1DB954;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">ADIDAS</div>
+    <ul id="navbar-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="selection.html">Selection</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <div class="nav-indicator"></div>
+    </ul>
+    <div class="cart">🛒</div>
+  </nav>
+
+  <p class="heading">Check our latest release!</p>
+
+<section class="selection-container">
+  <div class="item" 
+       data-title="Ultraboost 22" 
+       data-info="A high-performance running shoe designed for comfort and energy return." 
+       data-img="shoe1.jpg">
+       <img src="shoe1.jpg" alt="Ultraboost 22">
+       <p>Ultraboost 22</p>
+  </div>
+
+  <div class="item" 
+       data-title="Stan Smith" 
+       data-info="An iconic sneaker with a clean and timeless design." 
+       data-img="shoe2.jpg">
+       <img src="shoe2.jpg" alt="Stan Smith">
+       <p>Stan Smith</p>
+  </div>
+
+  <div class="item" 
+       data-title="Superstar" 
+       data-info="Classic shell-toe sneakers loved for decades." 
+       data-img="shoe3.jpg">
+       <img src="shoe3.jpg" alt="Superstar">
+       <p>Superstar</p>
+  </div>
+
+  <div class="item" 
+       data-title="NMD_R1" 
+       data-info="Streetwear-inspired shoes with responsive cushioning." 
+       data-img="shoe4.jpg">
+       <img src="shoe4.jpg" alt="NMD_R1">
+       <p>NMD_R1</p>
+  </div>
+
+  <div class="item" 
+       data-title="Gazelle" 
+       data-info="Retro training shoes with versatile style." 
+       data-img="shoe5.jpg">
+       <img src="shoe5.jpg" alt="Gazelle">
+       <p>Gazelle</p>
+  </div>
+
+  <div class="item" 
+       data-title="Forum Low" 
+       data-info="Basketball-inspired sneakers reimagined for today." 
+       data-img="shoe6.jpg">
+       <img src="shoe6.jpg" alt="Forum Low">
+       <p>Forum Low</p>
+  </div>
+</section>
+
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close-btn" id="close-btn">&times;</span>
+    <h2 id="popup-title"></h2>
+    <img id="popup-img" src="" alt="" style="max-width:100%; border-radius:8px; margin:15px 0;">
+    <p id="popup-info"></p>
+  </div>
+</div>
+
+  <script>
+    const indicator = document.querySelector('.nav-indicator');
+    const links = document.querySelectorAll('#navbar-links li a');
+
+    function moveIndicator(element) {
+      const rect = element.getBoundingClientRect();
+      const parentRect = element.parentElement.parentElement.getBoundingClientRect();
+      indicator.style.width = rect.width + "px";
+      indicator.style.left = (rect.left - parentRect.left) + "px";
+    }
+
+    links.forEach(link => {
+      link.addEventListener('mouseenter', (e) => {
+        moveIndicator(e.target);
+      });
+    });
+
+    window.addEventListener('load', () => {
+      moveIndicator(document.querySelector('a[href="selection.html"]'));
+    });
+
+    const items = document.querySelectorAll('.item');
+    const popup = document.getElementById('popup');
+    const popupTitle = document.getElementById('popup-title');
+    const popupInfo = document.getElementById('popup-info');
+    const closeBtn = document.getElementById('close-btn');
+
+items.forEach(item => {
+  item.addEventListener('click', () => {
+    popupTitle.textContent = item.getAttribute('data-title');
+    popupInfo.textContent = item.getAttribute('data-info');
+    document.getElementById("popup-img").src = item.getAttribute('data-img');
+    popup.style.display = 'flex';
+  });
+});
+
+    closeBtn.addEventListener('click', () => {
+      popup.style.display = 'none';
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>
